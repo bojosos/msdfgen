@@ -23,6 +23,12 @@ private:
 
 };
 
+// Crowny helper structure.
+struct FontImportInfo {
+    const char* fontFamilyName;
+    const char* fontStyleName;
+};
+
 /// Global metrics of a typeface (in font units).
 struct FontMetrics {
     /// The size of one EM.
@@ -33,6 +39,8 @@ struct FontMetrics {
     double lineHeight;
     /// The vertical position and thickness of the underline.
     double underlineY, underlineThickness;
+    /// The vertical position of the strike through.
+    double strikethroughY;
 };
 
 /// A structure to model a given axis of a variable font.
@@ -67,6 +75,8 @@ FontHandle * loadFontData(FreetypeHandle *library, const byte *data, int length)
 void destroyFont(FontHandle *font);
 /// Outputs the metrics of a font file.
 bool getFontMetrics(FontMetrics &metrics, FontHandle *font);
+/// Outputs import information of a font file.
+bool getImportInfo(FontImportInfo &info, FontHandle* font);
 /// Outputs the width of the space and tab characters.
 bool getFontWhitespaceWidth(double &spaceAdvance, double &tabAdvance, FontHandle *font);
 /// Outputs the glyph index corresponding to the specified Unicode character.

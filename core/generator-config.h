@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include "BitmapRef.hpp"
 
+#define MSDFGEN_PUBLIC __declspec(dllexport)
+
 namespace msdfgen {
 
 /// The configuration of the MSDF error correction pass.

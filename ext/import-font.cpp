@@ -41,6 +41,9 @@ class FontHandle {
     friend bool setFontVariationAxis(FreetypeHandle *library, FontHandle *font, const char *name, double coordinate);
     friend bool listFontVariationAxes(std::vector<FontVariationAxis> &axes, FreetypeHandle *library, FontHandle *font);
 
+    // Crowny helpers
+	friend bool getImportInfo(FontImportInfo &info, FontHandle* font);
+
     FT_Face face;
     bool ownership;
 
@@ -173,6 +176,13 @@ bool getFontMetrics(FontMetrics &metrics, FontHandle *font) {
     metrics.lineHeight = F26DOT6_TO_DOUBLE(font->face->height);
     metrics.underlineY = F26DOT6_TO_DOUBLE(font->face->underline_position);
     metrics.underlineThickness = F26DOT6_TO_DOUBLE(font->face->underline_thickness);
+    return true;
+}
+
+bool getImportInfo(FontImportInfo& info, FontHandle* font) {
+    // TODO: Do this in a better way
+    info.fontFamilyName = font->face->family_name;
+    info.fontStyleName = font->face->style_name;
     return true;
 }
 
