@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include "BitmapRef.hpp"
 
-#define MSDFGEN_PUBLIC __declspec(dllexport)
+#define MSDFGEN_PUBLIC // __declspec(dllexport)
 
 namespace msdfgen {
 
